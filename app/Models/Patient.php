@@ -13,4 +13,8 @@ class Patient extends Model
         'phone',
         'date_of_birth',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
