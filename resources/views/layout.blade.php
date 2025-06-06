@@ -5,9 +5,6 @@
   <meta charset="UTF-8">
   <title>Przychodnia</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- For hot reloading -->
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -26,7 +23,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a class="nav-link" href="{{ route('patients.index') }}">
                 🩺 Pacjenci
               </a>
             </li>
