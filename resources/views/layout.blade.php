@@ -26,6 +26,9 @@
               <a class="nav-link" href="{{ route('patients.index') }}">
                 🩺 Pacjenci
               </a>
+              <a class="nav-link" href="{{ route('doctors.index') }}">
+                🩺 Lekarze
+              </a>
             </li>
           </ul>
         </div>
