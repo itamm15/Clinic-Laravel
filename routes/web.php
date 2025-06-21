@@ -12,3 +12,4 @@ Route::get("/doctors/create", [DoctorController::class, 'create'])->name('doctor
 Route::post("/doctors", [DoctorController::class, 'store'])->name('doctors.store');
 Route::get("/doctors/{doctor}", [DoctorController::class, 'edit'])->name('doctors.edit');
 Route::put("/doctors/{doctor}", [DoctorController::class, 'update'])->name('doctors.update');
+Route::delete("/doctors/{doctor}", [DoctorController::class, 'delete'])->name('doctors.delete');

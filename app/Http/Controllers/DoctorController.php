@@ -37,7 +37,7 @@ class DoctorController extends Controller{
       'user_id' => $user->id
     ]);
 
-    return redirect()->route('doctors.index')->with('success', 'Lekarz został dodany.');
+    return redirect()->route('doctors.index');
   }
 
   public function edit(Doctor $doctor)
@@ -50,6 +50,12 @@ class DoctorController extends Controller{
     $validated = $request->validated();
     $doctor->update($validated);
 
-    return redirect()->route('doctors.index')->with('success', 'Lekarz został zaktualizowany.');
+    return redirect()->route('doctors.index');
+  }
+
+  public function delete(Doctor $doctor)
+  {
+    $doctor->delete();
+    return redirect()->route('doctors.index');
   }
 }
