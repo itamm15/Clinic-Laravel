@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorWithUserRequest;
 use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
 use App\Models\User;
@@ -18,7 +19,7 @@ class DoctorController extends Controller{
     return view('doctors.create');
   }
 
-  public function store(DoctorRequest $request)
+  public function store(DoctorWithUserRequest $request)
   {
     $validated = $request->validated();
 
@@ -37,5 +38,18 @@ class DoctorController extends Controller{
     ]);
 
     return redirect()->route('doctors.index')->with('success', 'Lekarz został dodany.');
+  }
+
+  public function edit(Doctor $doctor)
+  {
+    return view('doctors.edit', compact('doctor'));
+  }
+
+  public function update(DoctorRequest $request, Doctor $doctor)
+  {
+    $validated = $request->validated();
+    $doctor->update($validated);
+
+    return redirect()->route('doctors.index')->with('success', 'Lekarz został zaktualizowany.');
   }
 }

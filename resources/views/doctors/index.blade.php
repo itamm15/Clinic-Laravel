@@ -12,6 +12,7 @@
         <th>Imię i nazwisko</th>
         <th>Email</th>
         <th>Telefon</th>
+        <th>Akcje</th>
       </tr>
     </thead>
 
@@ -21,6 +22,9 @@
           <td>{{ $doctor->first_name }} {{ $doctor->last_name }}</td>
           <td>{{ $doctor->user->email }}</td>
           <td>{{ $doctor->phone }}</td>
+          <td>
+            <a href="{{ route('doctors.edit', $doctor->id) }}" class="btn btn-primary btn-sm">Edytuj</a>
+          </td>
         </tr>
       @endforeach
     </tbody>
