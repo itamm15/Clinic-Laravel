@@ -11,6 +11,7 @@ class Patient extends Model
         'last_name',
         'phone',
         'date_of_birth',
+        'user_id'
     ];
 
     public function user() {
