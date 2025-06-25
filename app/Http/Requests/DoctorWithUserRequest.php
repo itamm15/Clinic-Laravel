@@ -26,7 +26,7 @@ class DoctorWithUserRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'phone' => 'required|string|max:9|min:9',
             'date_of_birth' => 'required|date',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email|ends_with:@switalka.com',
             'password' => 'required|string|min:6|confirmed',
         ];
     }
