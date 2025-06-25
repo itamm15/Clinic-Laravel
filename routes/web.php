@@ -13,7 +13,7 @@ Route::middleware('auth')->group(function () {
     // landing page
     Route::get('/', function () {
         return view('home');
-    });
+    })->name('home');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
