@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Http\Requests\PatientWithUserRequest;
+use App\Http\Requests\PatientRequest;
 use App\Models\User;
 
 class PatientController extends Controller
@@ -37,6 +38,19 @@ class PatientController extends Controller
 			'date_of_birth' => $validated['date_of_birth'],
 			'user_id' => $user->id
 		]);
+
+		return redirect()->route('patients.index');
+	}
+
+	public function edit(Patient $patient)
+	{
+		return view('patients.edit', compact('patient'));
+	}
+
+	public function update(PatientRequest $request, Patient $patient)
+	{
+		$validated = $request->validated();
+		$patient->update($validated);
 
 		return redirect()->route('patients.index');
 	}
