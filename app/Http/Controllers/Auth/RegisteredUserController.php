@@ -31,7 +31,11 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class, function ($attribute, $value, $fail) {
+                if(str_ends_with($value, '@switalka.com')) {
+                    $fail('Rejestracja lekarzy jest niedozwolona.');
+                }
+            }],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
