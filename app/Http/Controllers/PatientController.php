@@ -40,4 +40,10 @@ class PatientController extends Controller
 
 		return redirect()->route('patients.index');
 	}
+
+	public function delete(Patient $patient)
+	{
+		$patient->delete();
+		return redirect()->route('patients.index');
+	}
 }

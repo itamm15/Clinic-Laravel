@@ -12,6 +12,7 @@
         <th>Imię i nazwisko</th>
         <th>Email</th>
         <th>Telefon</th>
+        <th>Akcje</th>
       </tr>
   </thead>
   <tbody>
@@ -20,6 +21,15 @@
         <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
         <td>{{ $patient->user->email }}</td>
         <td>{{ $patient->phone }}</td>
+        <td class="d-flex gap-2">
+          <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary btn-sm">Edytuj</a>
+
+          <form action="{{ route('patients.delete', $patient) }}" method="POST" onsubmit="return confirm('Na pewno usunąć?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+          </form>
+        </td>
       </tr>
     @endforeach
     </tbody>
