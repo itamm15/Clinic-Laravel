@@ -29,6 +29,10 @@
               <a class="nav-link" href="{{ route('doctors.index') }}">
                 🩺 Lekarze
               </a>
+              <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit" class="btn btn-danger">Wyloguj się</button>
+              </form>
             </li>
           </ul>
         </div>
