@@ -24,7 +24,7 @@
         <td>{{ $prescription->doctor->first_name }} {{ $prescription->doctor->last_name }}</td>
         <td>
           @if($prescription->visit)
-            Wizyta #{{ $prescription->visit->id }}
+            {{ $prescription->visit->datetime }}, {{ $prescription->visit->description }}
           @else
             brak
           @endif
