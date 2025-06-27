@@ -48,7 +48,7 @@
       <div class="col-md-6 mb-3">
         <label for="datetime" class="form-label">Data i godzina</label>
         <input type="datetime-local" name="datetime" id="datetime" class="form-control"
-          value="{{ old('datetime', \Carbon\Carbon::parse($visit->datetime)->format('Y-m-d\TH:i')) }}" required>
+          value="{{ old('datetime', $visit->datetime) }}" required>
       </div>
 
       <div class="col-md-6 mb-3">
