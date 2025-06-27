@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\VisitController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -43,6 +44,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/payments/{payment}', [PaymentController::class, 'edit'])->name('payments.edit');
     Route::put('/payments/{payment}', [PaymentController::class, 'update'])->name('payments.update');
     Route::delete("/payments/{payment}", [PaymentController::class, 'delete'])->name('payments.delete');
+
+    // visits
+    Route::get('/visits', [VisitController::class, 'index'])->name('visits.index');
+    Route::get('/visits/create', [VisitController::class, 'create'])->name('visits.create');
+    Route::post('/visits', [VisitController::class, 'store'])->name('visits.store');
+    Route::get('/visits/{visit}', [VisitController::class, 'edit'])->name('visits.edit');
+    Route::put('/visits/{visit}', [VisitController::class, 'update'])->name('visits.update');
+    Route::delete("/visits/{visit}", [VisitController::class, 'delete'])->name('visits.delete');
 });
 
 require __DIR__.'/auth.php';
