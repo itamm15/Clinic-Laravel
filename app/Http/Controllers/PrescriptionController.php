@@ -35,6 +35,23 @@ class PrescriptionController extends Controller
         return redirect()->route('prescriptions.index');
     }
 
+    public function edit(Prescription $prescription)
+    {
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        $visits = Visit::all();
+
+        return view('prescriptions.edit', compact('prescription', 'patients', 'doctors', 'visits'));
+    }
+
+    public function update(PrescriptionRequest $request, Prescription $prescription)
+    {
+        $validated = $request->validated();
+
+        $prescription->update($validated);
+        return redirect()->route('prescriptions.index');
+    }
+
     public function delete(Prescription $prescription)
     {
         $prescription->delete();
