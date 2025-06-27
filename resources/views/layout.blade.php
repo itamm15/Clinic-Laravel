@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <title>Przychodnia</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -18,31 +21,31 @@
           <h4 class="mb-4">🏥 Przychodnia</h4>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active">
+              <a class="nav-link active" href="{{ route('home') }}">
                 🏠 Strona główna
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('patients.index') }}">
-                🩺 Pacjenci
+                <i class="bi bi-person"></i><span class="mx-2">Pacjenci</span>
               </a>
               <a class="nav-link" href="{{ route('doctors.index') }}">
-                🩺 Lekarze
+                <i class="bi bi-activity"></i><span class="mx-2">Lekarze</span>
               </a>
               <a class="nav-link" href="{{ route('payments.index') }}">
-                🩺 Platności
+                <i class="bi bi-piggy-bank"></i><span class="mx-2">Platności</span>
               </a>
               <a class="nav-link" href="{{ route('visits.index') }}">
-                🩺 Wizyty
+                <i class="bi bi-calendar-date"></i><span class="mx-2">Wizyty</span>
               </a>
               <a class="nav-link" href="{{ route('documents.index') }}">
-                🩺 Dokumenty
+                <i class="bi bi-file-earmark-text-fill"></i><span class="mx-2">Dokumenty</span>
               </a>
               <a class="nav-link" href="{{ route('prescriptions.index') }}">
-                🩺 Recepty
+                <i class="bi bi-prescription"></i><span class="mx-2">Recepty</span>
               </a>
               <a class="nav-link" href="{{ route('procedures.index') }}">
-                🩺 Zabiegi
+                <i class="bi bi-bandaid-fill"></i><span class="mx-2">Zabiegi</span>
               </a>
               <form method="POST" action="{{ route('logout') }}">
                   @csrf
