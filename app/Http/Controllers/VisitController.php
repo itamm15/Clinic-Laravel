@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\VisitRequest;
+use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\Visit;
 
 class VisitController extends Controller
@@ -12,5 +15,19 @@ class VisitController extends Controller
         $visits = Visit::with('doctor', 'patient')->get();
 
         return view('visits.index', compact('visits'));
+    }
+
+    public function create()
+    {
+        $doctors = Doctor::all();
+        $patients = Patient::all();
+        return view('visits.create', compact('doctors', 'patients'));
+    }
+
+    public function store(VisitRequest $request)
+    {
+        $validated = $request->validated();
+        Visit::create($validated);
+        return redirect()->route('visits.index');
     }
 }

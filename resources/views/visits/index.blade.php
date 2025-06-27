@@ -6,7 +6,7 @@
     <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
   </div>
 
-  <table class="table table-striped">
+  <table class="table">
     <thead>
       <tr>
         <th>Lekarz</th>
@@ -22,7 +22,7 @@
         <tr>
           <td>{{ $visit->doctor->first_name }} {{ $visit->doctor->last_name }}</td>
           <td>{{ $visit->patient->first_name }} {{ $visit->patient->last_name }}</td>
-          <td>{{ \Carbon\Carbon::parse($visit->datetime)->format('d.m.Y H:i') }}</td>
+          <td>{{ $visit->datetime }}</td>
           <td>{{ $visit->description ?: '-' }}</td>
           <td>
             @if ($visit->active)
