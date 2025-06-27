@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     // users page
     Route::get("/users", [UserController::class, 'index'])->name('users.index');
+    Route::delete("/users/{user}", [UserController::class, 'delete'])->name('users.delete');
 
     // doctors
     Route::get("/doctors", [DoctorController::class, 'index'])->name('doctors.index');

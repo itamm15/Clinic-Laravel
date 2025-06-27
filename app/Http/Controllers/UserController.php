@@ -13,4 +13,10 @@ class UserController extends Controller
 
         return view('users.index', compact('users'));
     }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+        return redirect()->route('users.index');
+    }
 }

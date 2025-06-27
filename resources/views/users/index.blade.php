@@ -10,6 +10,7 @@
         <th>Typ</th>
         <th>Email</th>
         <th>Telefon</th>
+        <th>Akcje</th>
       </tr>
     </thead>
 
@@ -37,6 +38,13 @@
             @elseif ($user->doctor)
               {{ $user->doctor->phone }}
             @endif
+          </td>
+          <td>
+            <form action="{{ route('users.delete', $user->id) }}" method="POST" onsubmit="return confirm('Na pewno usunąć?')">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+            </form>
           </td>
         </tr>
       @endforeach
