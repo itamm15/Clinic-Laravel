@@ -34,4 +34,10 @@ class PrescriptionController extends Controller
         $prescription = Prescription::create($validated);
         return redirect()->route('prescriptions.index');
     }
+
+    public function delete(Prescription $prescription)
+    {
+        $prescription->delete();
+        return redirect()->route('prescriptions.index');
+    }
 }
