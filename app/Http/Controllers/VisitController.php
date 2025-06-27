@@ -30,4 +30,10 @@ class VisitController extends Controller
         Visit::create($validated);
         return redirect()->route('visits.index');
     }
+
+    public function delete(Visit $visit)
+    {
+        $visit->delete();
+        return redirect()->route('visits.index');
+    }
 }
