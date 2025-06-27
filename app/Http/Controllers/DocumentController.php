@@ -29,6 +29,20 @@ class DocumentController extends Controller
         return redirect()->route('documents.index');
     }
 
+    public function edit(Document $document)
+    {
+        $patients = Patient::all();
+        return view('documents.edit', compact('document', 'patients'));
+    }
+
+    public function update(DocumentRequest $request, Document $document)
+    {
+        $validated = $request->validated();
+
+        $document->update($validated);
+        return redirect()->route('documents.index');
+    }
+
     public function delete(Document $document)
     {
         $document->delete();
