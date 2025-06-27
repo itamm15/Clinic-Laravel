@@ -35,6 +35,9 @@
               <a class="nav-link" href="{{ route('visits.index') }}">
                 🩺 Wizyty
               </a>
+              <a class="nav-link" href="{{ route('documents.index') }}">
+                🩺 Dokumenty
+              </a>
               <form method="POST" action="{{ route('logout') }}">
                   @csrf
                   <button type="submit" class="btn btn-danger">Wyloguj się</button>

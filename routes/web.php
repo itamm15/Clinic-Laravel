@@ -5,6 +5,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\VisitController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -52,6 +53,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/visits/{visit}', [VisitController::class, 'edit'])->name('visits.edit');
     Route::put('/visits/{visit}', [VisitController::class, 'update'])->name('visits.update');
     Route::delete("/visits/{visit}", [VisitController::class, 'delete'])->name('visits.delete');
+
+    // documents
+    Route::get("/documents", [DocumentController::class, 'index'])->name('documents.index');
+    Route::get("/documents/create", [DocumentController::class, 'create'])->name('documents.create');
+    Route::post("/documents", [DocumentController::class, 'store'])->name('documents.store');
+    Route::get("/documents/{document}", [DocumentController::class, 'edit'])->name('documents.edit');
+    Route::put("/documents/{document}", [DocumentController::class, 'update'])->name('documents.update');
+    Route::delete("/documents/{document}", [DocumentController::class, 'delete'])->name('documents.delete');
 });
 
 require __DIR__.'/auth.php';
