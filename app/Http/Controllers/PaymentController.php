@@ -28,6 +28,19 @@ class PaymentController extends Controller
         return redirect()->route('payments.index');
     }
 
+    public function edit(Payment $payment)
+    {
+        $patients = Patient::all();
+        return view('payments.edit', compact('payment', 'patients'));
+    }
+
+    public function update(PaymentRequest $request, Payment $payment)
+    {
+        $validated = $request->validated();
+        $payment->update($validated);
+        return redirect()->route('payments.index');
+    }
+
     public function delete(Payment $payment)
     {
         $payment->delete();
