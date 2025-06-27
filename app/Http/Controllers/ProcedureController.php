@@ -29,6 +29,18 @@ class ProcedureController extends Controller
         return redirect()->route('procedures.index');
     }
 
+    public function edit(Procedure $procedure)
+    {
+        $doctors = Doctor::all();
+        return view('procedures.edit', compact('procedure', 'doctors'));
+    }
+
+    public function update(ProcedureRequest $request, Procedure $procedure)
+    {
+        $procedure->update($request->validated());
+        return redirect()->route('procedures.index');
+    }
+
     public function delete(Procedure $procedure)
     {
         $procedure->delete();
