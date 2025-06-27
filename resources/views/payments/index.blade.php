@@ -28,7 +28,7 @@
           <td>{{ $payment->description ?: '-' }}</td>
           <td class="d-flex gap-2">
             <a href="#" class="btn btn-primary btn-sm">Edytuj</a>
-            <form action="#" method="POST" onsubmit="return confirm('Na pewno usunąć tę płatność?')">
+            <form action="{{ route('payments.delete', $payment) }}" method="POST" onsubmit="return confirm('Na pewno usunąć tę płatność?')">
               @csrf
               @method('DELETE')
               <button type="submit" class="btn btn-danger btn-sm">Usuń</button>

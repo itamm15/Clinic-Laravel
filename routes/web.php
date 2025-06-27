@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
     Route::get('/payments/create', [PaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
+    Route::delete("/payments/{payment}", [PaymentController::class, 'delete'])->name('payments.delete');
 });
 
 require __DIR__.'/auth.php';

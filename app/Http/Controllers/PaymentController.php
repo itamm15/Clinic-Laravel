@@ -27,4 +27,10 @@ class PaymentController extends Controller
         Payment::create($validated);
         return redirect()->route('payments.index');
     }
+
+    public function delete(Payment $payment)
+    {
+        $payment->delete();
+        return redirect()->route('payments.index');
+    }
 }
