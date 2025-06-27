@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::get("/patients/{patient}", [PatientController::class, 'edit'])->name('patients.edit');
     Route::put("/patients/{patient}", [PatientController::class, 'update'])->name('patients.update');
     Route::delete("/patients/{patient}", [PatientController::class, 'delete'])->name('patients.delete');
+
+    // payments
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
 });
 
 require __DIR__.'/auth.php';
