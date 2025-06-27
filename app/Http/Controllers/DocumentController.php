@@ -28,4 +28,10 @@ class DocumentController extends Controller
         Document::create($validated);
         return redirect()->route('documents.index');
     }
+
+    public function delete(Document $document)
+    {
+        $document->delete();
+        return redirect()->route('documents.index');
+    }
 }
