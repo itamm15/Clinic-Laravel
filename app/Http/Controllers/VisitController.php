@@ -31,6 +31,20 @@ class VisitController extends Controller
         return redirect()->route('visits.index');
     }
 
+    public function edit(Visit $visit)
+    {
+        $doctors = Doctor::all();
+        $patients = Patient::all();
+        return view('visits.edit', compact('visit', 'doctors', 'patients'));
+    }
+
+    public function update(VisitRequest $request, Visit $visit)
+    {
+        $validated = $request->validated();
+        $visit->update($validated);
+        return redirect()->route('visits.index');
+    }
+
     public function delete(Visit $visit)
     {
         $visit->delete();
