@@ -47,6 +47,9 @@
             <a class="nav-link" href="{{ route('procedures.index') }}">
               <i class="bi bi-bandaid-fill"></i><span class="mx-2">Zabiegi</span>
             </a>
+            <a class="nav-link" href="{{ route('users.index') }}">
+              <i class="bi bi-people"></i><span class="mx-2">Uzytkownicy</span>
+            </a>
           </li>
         </ul>
       </div>

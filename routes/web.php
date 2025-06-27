@@ -8,6 +8,7 @@ use App\Http\Controllers\VisitController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\ProcedureController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -23,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // users page
+    Route::get("/users", [UserController::class, 'index'])->name('users.index');
 
     // doctors
     Route::get("/doctors", [DoctorController::class, 'index'])->name('doctors.index');
