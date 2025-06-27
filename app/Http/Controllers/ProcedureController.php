@@ -28,4 +28,10 @@ class ProcedureController extends Controller
         Procedure::create($request->validated());
         return redirect()->route('procedures.index');
     }
+
+    public function delete(Procedure $procedure)
+    {
+        $procedure->delete();
+        return redirect()->route('procedures.index');
+    }
 }
