@@ -6,6 +6,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\VisitController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -61,6 +62,14 @@ Route::middleware('auth')->group(function () {
     Route::get("/documents/{document}", [DocumentController::class, 'edit'])->name('documents.edit');
     Route::put("/documents/{document}", [DocumentController::class, 'update'])->name('documents.update');
     Route::delete("/documents/{document}", [DocumentController::class, 'delete'])->name('documents.delete');
+
+    // prescriptions
+    Route::get("/prescriptions", [PrescriptionController::class, 'index'])->name('prescriptions.index');
+    Route::get("/prescriptions/create", [PrescriptionController::class, 'create'])->name('prescriptions.create');
+    Route::post("/prescriptions", [PrescriptionController::class, 'store'])->name('prescriptions.store');
+    Route::get("/prescriptions/{prescription}", [PrescriptionController::class, 'edit'])->name('prescriptions.edit');
+    Route::put("/prescriptions/{prescription}", [PrescriptionController::class, 'update'])->name('prescriptions.update');
+    Route::delete("/prescriptions/{prescription}", [PrescriptionController::class, 'delete'])->name('prescriptions.delete');
 });
 
 require __DIR__.'/auth.php';

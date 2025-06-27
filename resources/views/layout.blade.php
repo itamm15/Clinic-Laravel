@@ -38,6 +38,9 @@
               <a class="nav-link" href="{{ route('documents.index') }}">
                 🩺 Dokumenty
               </a>
+              <a class="nav-link" href="{{ route('prescriptions.index') }}">
+                🩺 Recepty
+              </a>
               <form method="POST" action="{{ route('logout') }}">
                   @csrf
                   <button type="submit" class="btn btn-danger">Wyloguj się</button>
