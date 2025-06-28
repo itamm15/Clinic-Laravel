@@ -6,6 +6,8 @@
   <a href="{{ route('prescriptions.create') }}" class="btn btn-primary mb-3">Dodaj receptę</a>
 </div>
 
+<input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
+
 <table class="table">
   <thead>
     <tr>
@@ -19,7 +21,7 @@
   </thead>
   <tbody>
     @foreach ($prescriptions as $prescription)
-      <tr>
+      <tr class="data-to-filter" data-text="{{ $prescription->description }} ">
         <td>{{ $prescription->patient->first_name }} {{ $prescription->patient->last_name }}</td>
         <td>{{ $prescription->doctor->first_name }} {{ $prescription->doctor->last_name }}</td>
         <td>

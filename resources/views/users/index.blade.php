@@ -3,6 +3,8 @@
 @section('content')
   <h1>Lista uzytkowników</h1>
 
+  <input type="text" placeholder="Podaj imie lub nazwisko uzytkownika" class="form-control mb-3 w-50" id="searcher">
+
   <table class="table">
     <thead>
       <tr>
@@ -16,7 +18,12 @@
 
     <tbody>
       @foreach($users as $user)
-        <tr>
+        <tr
+          class="data-to-filter"
+          data-text="{{ $user->patient ?
+                        $user->patient->first_name . ' ' . $user->patient->last_name
+                        : ($user->doctor ? $user->doctor->first_name . ' ' . $user->doctor->last_name : '') }}"
+        >
           <td>
             @if ($user->patient)
               {{ $user->patient->first_name }} {{ $user->patient->last_name }}

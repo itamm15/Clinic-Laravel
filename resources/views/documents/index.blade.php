@@ -6,6 +6,8 @@
   <a href="{{ route('documents.create') }}" class="btn btn-primary mb-3">Dodaj dokument</a>
 </div>
 
+<input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
+
 <table class="table">
   <thead>
     <tr>
@@ -17,7 +19,7 @@
   </thead>
   <tbody>
     @foreach ($documents as $document)
-      <tr>
+      <tr class="data-to-filter" data-text="{{ $document->description }} ">
         <td>{{ $document->patient->first_name }} {{ $document->patient->last_name }}</td>
         <td>{{ $document->date }}</td>
         <td>{{ $document->description }}</td>

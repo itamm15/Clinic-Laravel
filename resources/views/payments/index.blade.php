@@ -6,6 +6,8 @@
     <a href="{{ route('payments.create') }}" class="btn btn-primary mb-3">Dodaj płatność</a>
   </div>
 
+  <input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
+
   <table class="table">
     <thead>
       <tr>
@@ -18,7 +20,7 @@
     </thead>
     <tbody>
       @foreach($payments as $payment)
-        <tr>
+        <tr class="data-to-filter" data-text="{{ $payment->description }} ">
           <td>
             {{ $payment->patient->first_name ?? '-' }}
             {{ $payment->patient->last_name ?? '' }}

@@ -6,6 +6,8 @@
     <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
   </div>
 
+  <input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
+
   <table class="table">
     <thead>
       <tr>
@@ -19,7 +21,7 @@
     </thead>
     <tbody>
       @foreach ($visits as $visit)
-        <tr>
+        <tr class="data-to-filter" data-text="{{ $visit->description }} ">
           <td>{{ $visit->doctor->first_name }} {{ $visit->doctor->last_name }}</td>
           <td>{{ $visit->patient->first_name }} {{ $visit->patient->last_name }}</td>
           <td>{{ $visit->datetime }}</td>

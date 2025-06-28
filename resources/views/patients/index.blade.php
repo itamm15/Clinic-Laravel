@@ -6,6 +6,8 @@
     <a href="{{ route('patients.create') }}" class="btn btn-primary mb-3">Dodaj pacjenta</a>
   </div>
 
+  <input type="text" placeholder="Podaj imie lub nazwisko pacjenta" class="form-control mb-3 w-50" id="searcher">
+
   <table class="table">
     <thead>
       <tr>
@@ -17,7 +19,7 @@
   </thead>
   <tbody>
     @foreach($patients as $patient)
-      <tr>
+      <tr class="data-to-filter" data-text="{{ $patient->first_name }} {{ $patient->last_name }}">
         <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
         <td>{{ $patient->user->email }}</td>
         <td>{{ $patient->phone }}</td>

@@ -6,6 +6,8 @@
   <a href="{{ route('procedures.create') }}" class="btn btn-primary mb-3">Dodaj zabieg</a>
 </div>
 
+<input type="text" placeholder="Podaj opis zabiegu" class="form-control mb-3 w-50" id="searcher">
+
 <table class="table">
   <thead>
     <tr>
@@ -16,7 +18,7 @@
   </thead>
   <tbody>
     @foreach ($procedures as $procedure)
-      <tr>
+      <tr class="data-to-filter" data-text="{{ $procedure->description }} ">
         <td>{{ $procedure->doctor->first_name }} {{ $procedure->doctor->last_name }}</td>
         <td>{{ $procedure->description }}</td>
         <td class="d-flex gap-2">
