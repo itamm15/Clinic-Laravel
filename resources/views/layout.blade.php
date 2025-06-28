@@ -29,30 +29,79 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('patients.index') }}">
-              <i class="bi bi-person"></i><span class="mx-2">Pacjenci</span>
-            </a>
-            <a class="nav-link" href="{{ route('doctors.index') }}">
-              <i class="bi bi-activity"></i><span class="mx-2">Lekarze</span>
-            </a>
-            <a class="nav-link" href="{{ route('payments.index') }}">
-              <i class="bi bi-piggy-bank"></i><span class="mx-2">Platności</span>
-            </a>
-            <a class="nav-link" href="{{ route('visits.index') }}">
-              <i class="bi bi-calendar-date"></i><span class="mx-2">Wizyty</span>
-            </a>
-            <a class="nav-link" href="{{ route('documents.index') }}">
-              <i class="bi bi-file-earmark-text-fill"></i><span class="mx-2">Dokumenty</span>
-            </a>
-            <a class="nav-link" href="{{ route('prescriptions.index') }}">
-              <i class="bi bi-prescription"></i><span class="mx-2">Recepty</span>
-            </a>
-            <a class="nav-link" href="{{ route('procedures.index') }}">
-              <i class="bi bi-bandaid-fill"></i><span class="mx-2">Zabiegi</span>
-            </a>
-            <a class="nav-link" href="{{ route('users.index') }}">
-              <i class="bi bi-people"></i><span class="mx-2">Uzytkownicy</span>
-            </a>
+            @if(auth()->user()->is_admin)
+
+              <a class="nav-link" href="{{ route('patients.index') }}">
+                <i class="bi bi-person"></i><span class="mx-2">Pacjenci</span>
+              </a>
+              <a class="nav-link" href="{{ route('doctors.index') }}">
+                <i class="bi bi-activity"></i><span class="mx-2">Lekarze</span>
+              </a>
+              <a class="nav-link" href="{{ route('payments.index') }}">
+                <i class="bi bi-piggy-bank"></i><span class="mx-2">Platności</span>
+              </a>
+              <a class="nav-link" href="{{ route('visits.index') }}">
+                <i class="bi bi-calendar-date"></i><span class="mx-2">Wizyty</span>
+              </a>
+              <a class="nav-link" href="{{ route('documents.index') }}">
+                <i class="bi bi-file-earmark-text-fill"></i><span class="mx-2">Dokumenty</span>
+              </a>
+              <a class="nav-link" href="{{ route('prescriptions.index') }}">
+                <i class="bi bi-prescription"></i><span class="mx-2">Recepty</span>
+              </a>
+              <a class="nav-link" href="{{ route('procedures.index') }}">
+                <i class="bi bi-bandaid-fill"></i><span class="mx-2">Zabiegi</span>
+              </a>
+              <a class="nav-link" href="{{ route('users.index') }}">
+                <i class="bi bi-people"></i><span class="mx-2">Uzytkownicy</span>
+              </a>
+
+            @elseif(auth()->user()->doctor)
+
+              <a class="nav-link" href="{{ route('patients.index') }}">
+                <i class="bi bi-person"></i><span class="mx-2">Pacjenci</span>
+              </a>
+              <a class="nav-link" href="{{ route('doctors.index') }}">
+                <i class="bi bi-activity"></i><span class="mx-2">Lekarze</span>
+              </a>
+              <a class="nav-link" href="{{ route('payments.index') }}">
+                <i class="bi bi-piggy-bank"></i><span class="mx-2">Platności</span>
+              </a>
+              <a class="nav-link" href="{{ route('visits.index') }}">
+                <i class="bi bi-calendar-date"></i><span class="mx-2">Wizyty</span>
+              </a>
+              <a class="nav-link" href="{{ route('documents.index') }}">
+                <i class="bi bi-file-earmark-text-fill"></i><span class="mx-2">Dokumenty</span>
+              </a>
+              <a class="nav-link" href="{{ route('prescriptions.index') }}">
+                <i class="bi bi-prescription"></i><span class="mx-2">Recepty</span>
+              </a>
+              <a class="nav-link" href="{{ route('procedures.index') }}">
+                <i class="bi bi-bandaid-fill"></i><span class="mx-2">Zabiegi</span>
+              </a>
+
+            @elseif(auth()->user()->patient)
+
+              <a class="nav-link" href="{{ route('doctors.index') }}">
+                <i class="bi bi-activity"></i><span class="mx-2">Lekarze</span>
+              </a>
+              <a class="nav-link" href="{{ route('payments.index') }}">
+                <i class="bi bi-piggy-bank"></i><span class="mx-2">Platności</span>
+              </a>
+              <a class="nav-link" href="{{ route('visits.index') }}">
+                <i class="bi bi-calendar-date"></i><span class="mx-2">Wizyty</span>
+              </a>
+              <a class="nav-link" href="{{ route('documents.index') }}">
+                <i class="bi bi-file-earmark-text-fill"></i><span class="mx-2">Dokumenty</span>
+              </a>
+              <a class="nav-link" href="{{ route('prescriptions.index') }}">
+                <i class="bi bi-prescription"></i><span class="mx-2">Recepty</span>
+              </a>
+              <a class="nav-link" href="{{ route('procedures.index') }}">
+                <i class="bi bi-bandaid-fill"></i><span class="mx-2">Zabiegi</span>
+              </a>
+
+            @endif
           </li>
         </ul>
       </div>
