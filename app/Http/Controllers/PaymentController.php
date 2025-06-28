@@ -11,7 +11,16 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $payments = Payment::with('patient')->get();
+        $payments = null;
+        if (auth()->user()->patient)
+        {
+            $payments = Payment::with('patient')->where('patient_id', auth()->user()->patient->id)->get();
+        }
+        else
+        {
+            $payments = Payment::with('patient')->get();
+        }
+
         return view('payments.index', compact('payments'));
     }
 
