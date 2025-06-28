@@ -40,11 +40,13 @@
             @endif
           </td>
           <td>
-            <form action="{{ route('users.delete', $user->id) }}" method="POST" onsubmit="return confirm('Na pewno usunąć?')">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
-            </form>
+            @if (!$user->is_admin)
+              <form action="{{ route('users.delete', $user->id) }}" method="POST" onsubmit="return confirm('Na pewno usunąć?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+              </form>
+            @endif
           </td>
         </tr>
       @endforeach
