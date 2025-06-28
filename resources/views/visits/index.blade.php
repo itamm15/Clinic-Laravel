@@ -3,7 +3,10 @@
 @section('content')
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Lista wizyt</h1>
-    <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
+
+    @if(auth()->user()->is_admin || auth()->user()->doctor)
+      <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
+    @endif
   </div>
 
   <input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
@@ -34,12 +37,16 @@
             @endif
           </td>
           <td class="d-flex gap-2">
-            <a href="{{ route('visits.edit', $visit) }}" class="btn btn-primary btn-sm">Edytuj</a>
-            <form action="{{ route('visits.delete', $visit) }}" method="POST" onsubmit="return confirm('Na pewno usunąć wizytę?')">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
-            </form>
+            @if(auth()->user()->is_admin || auth()->user()->doctor)
+              <a href="{{ route('visits.edit', $visit) }}" class="btn btn-primary btn-sm">Edytuj</a>
+              <form action="{{ route('visits.delete', $visit) }}" method="POST" onsubmit="return confirm('Na pewno usunąć wizytę?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+              </form>
+            @else
+              Brak akcji
+            @endif
           </td>
         </tr>
       @endforeach
