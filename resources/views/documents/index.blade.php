@@ -3,7 +3,9 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h2>Dokumenty</h2>
-  <a href="{{ route('documents.create') }}" class="btn btn-primary mb-3">Dodaj dokument</a>
+  @if (!auth()->user()->patient)
+    <a href="{{ route('documents.create') }}" class="btn btn-primary mb-3">Dodaj dokument</a>
+  @endif
 </div>
 
 <input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
@@ -24,12 +26,16 @@
         <td>{{ $document->date }}</td>
         <td>{{ $document->description }}</td>
         <td class="d-flex gap-2">
-          <a href="{{ route('documents.edit', $document->id) }}" class="btn btn-primary btn-sm">Edytuj</a>
-          <form action="{{ route('documents.delete', $document->id) }}" method="POST" onsubmit="return confirm('Na pewno usunąć?')">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
-          </form>
+          @if (!auth()->user()->patient)
+            <a href="{{ route('documents.edit', $document->id) }}" class="btn btn-primary btn-sm">Edytuj</a>
+            <form action="{{ route('documents.delete', $document->id) }}" method="POST" onsubmit="return confirm('Na pewno usunąć?')">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+            </form>
+          @else
+            Brak akcji
+          @endif
         </td>
       </tr>
     @endforeach

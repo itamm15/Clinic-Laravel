@@ -11,7 +11,16 @@ class DocumentController extends Controller
 {
     public function index()
     {
-        $documents = Document::with('patient')->get();
+        $documents = null;
+
+        if (auth()->user()->patient)
+        {
+            $documents = Document::with('patient')->where('patient_id', auth()->user()->patient->id)->get();
+        } else
+        {
+            $documents = Document::with('patient')->get();
+        }
+
         return view('documents.index', compact('documents'));
     }
 
