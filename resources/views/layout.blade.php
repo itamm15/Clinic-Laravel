@@ -11,6 +11,9 @@
 
   <!-- filter -->
   <script src="{{ asset('js/filter.js') }}"></script>
+
+  <!-- calendar -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
 </head>
 
 <body>

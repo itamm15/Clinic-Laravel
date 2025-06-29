@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function () {
 
     // visits
     Route::get('/visits', [VisitController::class, 'index'])->name('visits.index');
+    Route::get('/visits/calendar', [VisitController::class, 'calendar'])->name('visits.calendar');
     Route::put('/visits/cancel/{visit}', [VisitController::class, 'cancel'])->name('visits.cancel');
     Route::get('/visits/create', [VisitController::class, 'create'])->name('visits.create');
     Route::post('/visits', [VisitController::class, 'store'])->name('visits.store');

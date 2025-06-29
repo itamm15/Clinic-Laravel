@@ -25,6 +25,28 @@ class VisitController extends Controller
         return view('visits.index', compact('visits'));
     }
 
+    public function calendar()
+    {
+        $visits = null;
+
+        if (auth()->user()->patient)
+        {
+            $visits = Visit::with('doctor', 'patient')->where('patient_id', auth()->user()->patient->id)->get();
+        } else
+        {
+            $visits = Visit::with('doctor', 'patient')->get();
+        }
+
+        $visits = $visits->map(function($visit) {
+            return [
+                'title' => $visit->description,
+                'start' => $visit->datetime,
+            ];
+        });
+
+        return view('visits.calendar', compact('visits'));
+    }
+
     public function create()
     {
         $doctors = Doctor::all();
