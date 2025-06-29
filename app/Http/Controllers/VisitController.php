@@ -58,4 +58,11 @@ class VisitController extends Controller
         $visit->delete();
         return redirect()->route('visits.index');
     }
+
+    public function cancel(Visit $visit)
+    {
+        $visit->update(['active' => 0]);
+
+        return redirect()->route('visits.index');
+    }
 }

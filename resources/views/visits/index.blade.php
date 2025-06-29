@@ -39,13 +39,30 @@
           <td class="d-flex gap-2">
             @if(auth()->user()->is_admin || auth()->user()->doctor)
               <a href="{{ route('visits.edit', $visit) }}" class="btn btn-primary btn-sm">Edytuj</a>
-              <form action="{{ route('visits.delete', $visit) }}" method="POST" onsubmit="return confirm('Na pewno usunąć wizytę?')">
+
+              <form action="{{ route('visits.cancel', $visit) }}" method="POST" onsubmit="return confirm('Na pewno odwołać wizytę?')">
                 @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                @method('PUT')
+                <button type="submit" class="btn btn-danger btn-sm">Odwołaj</button>
               </form>
+
+              @if ($visit->active)
+                <form action="{{ route('visits.delete', $visit) }}" method="POST" onsubmit="return confirm('Na pewno usunąć wizytę?')">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                </form>
+              @endif
             @else
-              Brak akcji
+              @if ($visit->active)
+                <form action="{{ route('visits.cancel', $visit) }}" method="POST" onsubmit="return confirm('Na pewno odwołać wizytę?')">
+                  @csrf
+                  @method('PUT')
+                  <button type="submit" class="btn btn-danger btn-sm">Odwołaj</button>
+                </form>
+              @else
+                Brak akcji
+              @endif
             @endif
           </td>
         </tr>
