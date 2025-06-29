@@ -4,7 +4,10 @@
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Lista wizyt</h1>
 
-    <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
+    <div>
+      <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
+      <a href="{{ route('visits.calendar') }}" class="btn btn-primary">Kalendarz</a>
+    </div>
   </div>
 
   <input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
@@ -38,19 +41,19 @@
             @if(auth()->user()->is_admin || auth()->user()->doctor)
               <a href="{{ route('visits.edit', $visit) }}" class="btn btn-primary btn-sm">Edytuj</a>
 
-              <form action="{{ route('visits.cancel', $visit) }}" method="POST" onsubmit="return confirm('Na pewno odwołać wizytę?')">
-                @csrf
-                @method('PUT')
-                <button type="submit" class="btn btn-danger btn-sm">Odwołaj</button>
-              </form>
-
               @if ($visit->active)
-                <form action="{{ route('visits.delete', $visit) }}" method="POST" onsubmit="return confirm('Na pewno usunąć wizytę?')">
+                <form action="{{ route('visits.cancel', $visit) }}" method="POST" onsubmit="return confirm('Na pewno odwołać wizytę?')">
                   @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+                  @method('PUT')
+                  <button type="submit" class="btn btn-danger btn-sm">Odwołaj</button>
                 </form>
               @endif
+
+              <form action="{{ route('visits.delete', $visit) }}" method="POST" onsubmit="return confirm('Na pewno usunąć wizytę?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-sm">Usuń</button>
+              </form>
             @else
               @if ($visit->active)
                 <form action="{{ route('visits.cancel', $visit) }}" method="POST" onsubmit="return confirm('Na pewno odwołać wizytę?')">
