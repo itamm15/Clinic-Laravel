@@ -57,8 +57,9 @@ class PatientController extends Controller
 
 	public function delete(Patient $patient)
 	{
-		// TODO: delete user
+		$user = User::where('id', $patient->user_id)->first();
 		$patient->delete();
+		$user->delete();
 		return redirect()->route('patients.index');
 	}
 }
