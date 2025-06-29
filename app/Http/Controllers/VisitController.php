@@ -28,7 +28,16 @@ class VisitController extends Controller
     public function create()
     {
         $doctors = Doctor::all();
-        $patients = Patient::all();
+        $patients = null;
+
+        if (auth()->user()->patient)
+        {
+            $patients = Patient::where('id', auth()->user()->patient->id)->get();
+        } else
+        {
+            $patients = Patient::all();
+        }
+
         return view('visits.create', compact('doctors', 'patients'));
     }
 

@@ -64,10 +64,10 @@ Route::middleware('auth')->group(function () {
     // visits
     Route::get('/visits', [VisitController::class, 'index'])->name('visits.index');
     Route::put('/visits/cancel/{visit}', [VisitController::class, 'cancel'])->name('visits.cancel');
+    Route::get('/visits/create', [VisitController::class, 'create'])->name('visits.create');
+    Route::post('/visits', [VisitController::class, 'store'])->name('visits.store');
 
     Route::middleware('access:admin,doctor')->group(function() {
-        Route::get('/visits/create', [VisitController::class, 'create'])->name('visits.create');
-        Route::post('/visits', [VisitController::class, 'store'])->name('visits.store');
         Route::get('/visits/{visit}', [VisitController::class, 'edit'])->name('visits.edit');
         Route::put('/visits/{visit}', [VisitController::class, 'update'])->name('visits.update');
         Route::delete("/visits/{visit}", [VisitController::class, 'delete'])->name('visits.delete');

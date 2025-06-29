@@ -21,7 +21,6 @@
       <div class="col-md-6 mb-3">
         <label for="doctor_id" class="form-label">Lekarz</label>
         <select name="doctor_id" id="doctor_id" class="form-select" required>
-          <option value="">-- wybierz lekarza --</option>
           @foreach ($doctors as $doctor)
             <option value="{{ $doctor->id }}" {{ old('doctor_id') == $doctor->id ? 'selected' : '' }}>
               {{ $doctor->first_name }} {{ $doctor->last_name }}
@@ -33,7 +32,6 @@
       <div class="col-md-6 mb-3">
         <label for="patient_id" class="form-label">Pacjent</label>
         <select name="patient_id" id="patient_id" class="form-select" required>
-          <option value="">-- wybierz pacjenta --</option>
           @foreach ($patients as $patient)
             <option value="{{ $patient->id }}" {{ old('patient_id') == $patient->id ? 'selected' : '' }}>
               {{ $patient->first_name }} {{ $patient->last_name }}

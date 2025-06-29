@@ -4,9 +4,7 @@
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Lista wizyt</h1>
 
-    @if(auth()->user()->is_admin || auth()->user()->doctor)
-      <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
-    @endif
+    <a href="{{ route('visits.create') }}" class="btn btn-primary">Dodaj wizytę</a>
   </div>
 
   <input type="text" placeholder="Podaj opis" class="form-control mb-3 w-50" id="searcher">
