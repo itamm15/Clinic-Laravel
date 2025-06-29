@@ -14,15 +14,12 @@ class VisitController extends Controller
     {
         $visits = null;
 
-        if (auth()->user()->is_admin)
-        {
-            $visits = Visit::with('doctor', 'patient')->get();
-        } else if (auth()->user()->patient)
+        if (auth()->user()->patient)
         {
             $visits = Visit::with('doctor', 'patient')->where('patient_id', auth()->user()->patient->id)->get();
-        } else if (auth()->user()->doctor)
+        } else
         {
-            $visits = Visit::with('doctor', 'patient')->where('doctor_id', auth()->user()->doctor->id)->get();
+            $visits = Visit::with('doctor', 'patient')->get();
         }
 
         return view('visits.index', compact('visits'));

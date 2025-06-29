@@ -3,7 +3,7 @@
 @section('content')
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1>Lista płatności</h1>
-    @if (auth()->user()->is_admin)
+    @if (!auth()->user()->patient)
       <a href="{{ route('payments.create') }}" class="btn btn-primary mb-3">Dodaj płatność</a>
     @endif
   </div>
@@ -31,7 +31,7 @@
           <td>{{ $payment->amount }} zł</td>
           <td>{{ $payment->description ?: '-' }}</td>
           <td class="d-flex gap-2">
-            @if (auth()->user()->is_admin)
+            @if (!auth()->user()->patient)
               <a href="{{ route('payments.edit', $payment->id) }}" class="btn btn-primary btn-sm">Edytuj</a>
               <form action="{{ route('payments.delete', $payment) }}" method="POST" onsubmit="return confirm('Na pewno usunąć tę płatność?')">
                 @csrf
