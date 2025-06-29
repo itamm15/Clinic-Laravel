@@ -1,7 +1,10 @@
 @extends('layout')
 
 @section('content')
-  <div id='calendar' data-data='@json($visits)'></div>
+  <a href="{{ route('visits.calendar') }}" class="btn btn-primary">Wszystkie</a>
+  <a href="{{ route('visits.calendar', ['active' => 1]) }}" class="btn btn-success">Aktywne</a>
+  <a href="{{ route('visits.calendar', ['active' => 0]) }}" class="btn btn-danger">Nieaktywne</a>
+  <div id='calendar' class="mt-5" data-data='@json($visits)'></div>
 @endsection
 
 <script>
