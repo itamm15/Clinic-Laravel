@@ -8,6 +8,7 @@ use App\Models\Prescription;
 use App\Models\Patient;
 use App\Models\Doctor;
 use App\Models\Procedure;
+use App\Models\Payment;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,7 @@ class HomeController extends Controller
         $proceduresNumber = Procedure::count();
         $prescriptionsNumber = 0;
         $visitsNumber = 0;
+        $paymentsSum = 0;
 
         if (auth()->user()->patient)
         {
@@ -30,8 +32,9 @@ class HomeController extends Controller
         {
             $visitsNumber = Visit::count();
             $prescriptionsNumber = Prescription::count();
+            $paymentsSum = Payment::sum('amount');
         }
 
-        return view('home', compact('doctorsNumber', 'patientsNumber', 'proceduresNumber', 'prescriptionsNumber', 'visitsNumber'));
+        return view('home', compact('doctorsNumber', 'patientsNumber', 'proceduresNumber', 'prescriptionsNumber', 'visitsNumber', 'paymentsSum'));
     }
 }

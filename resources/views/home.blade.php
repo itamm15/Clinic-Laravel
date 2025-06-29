@@ -46,6 +46,17 @@
         </div>
       </div>
     </div>
+
+    @if (auth()->user()->is_admin)
+      <div class="col-md-3">
+        <div class="card text-bg-success mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Platności</h5>
+            <p class="card-text display-6">{{ $paymentsSum }} zł</p>
+          </div>
+        </div>
+      </div>
+    @endif
   </div>
 
 @endsection
