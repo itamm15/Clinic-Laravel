@@ -13,7 +13,14 @@ class PrescriptionController extends Controller
 {
     public function index()
     {
-        $prescriptions = Prescription::with('patient', 'doctor', 'visit')->get();
+        $prescriptions = null;
+
+        if (auth()->user()->patient)
+        {
+            $prescriptions = Prescription::with('patient', 'doctor', 'visit')->where('patient_id', auth()->user()->patient->id)->get();
+        } else {
+            $prescriptions = Prescription::with('patient', 'doctor', 'visit')->get();
+        }
 
         return view('prescriptions.index', compact('prescriptions'));
     }
